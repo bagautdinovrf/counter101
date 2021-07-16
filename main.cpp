@@ -43,6 +43,8 @@ using namespace std;
  */
 unsigned maxOnesAfterRemoveItem_v2( const vector<unsigned char> &v )
 {
+    if( v.empty() )
+        return 0;
     // Счетчик
     unsigned maxCount = 0;
     // Счетчик для каждой последовательности
@@ -90,6 +92,9 @@ return maxCount;
  */
 unsigned maxOnesAfterRemoveItem( const vector<unsigned char> &v )
 {
+    if( v.empty() )
+        return 0;
+
     unsigned maxCount = 0;
     unsigned zero = 0;
     unsigned counter = 0;
@@ -125,9 +130,10 @@ return maxCount;
 
 int main()
 {
-//    vector<unsigned char> v = {1,1};
+//    vector<unsigned char> v = {0};
 //    vector<unsigned char> v = {1, 1, 0, 1, 1, 0, 1, 1, 1,0,1,1,1};
 //    cout << maxOnesAfterRemoveItem_v2(v) << endl;
+//    cout << maxOnesAfterRemoveItem(v) << endl;
 
 //    unsigned size = 294'967'290;
 //    vector<unsigned char> v(size);
