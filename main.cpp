@@ -44,7 +44,7 @@ using namespace std;
 unsigned maxOnesAfterRemoveItem_v2( const vector<unsigned char> &v )
 {
     // Счетчик
-    unsigned maxC = 0;
+    unsigned maxCount = 0;
     // Счетчик для каждой последовательности
     unsigned c1 = 0, c2 = 0;
     // Флаги для обнаруженияя нуля
@@ -60,14 +60,14 @@ unsigned maxOnesAfterRemoveItem_v2( const vector<unsigned char> &v )
             // Сброс второго нуля
             if( c1 > 0 || c2 > 0 ) {
                 if( zf1 ) {
-                    maxC = max( maxC, c1 );
+                    maxCount = max( maxCount, c1 );
                     zf1 = false;
                     c1 = 0;
                 } else if( c1 > 0)
                     zf1 = true;
 
                 if( zf2 ) {
-                    maxC = max( maxC, c2 );
+                    maxCount = max( maxCount, c2 );
                     zf2 = false;
                     c2 = 0;
                 } else if( c2 > 0 )
@@ -76,10 +76,10 @@ unsigned maxOnesAfterRemoveItem_v2( const vector<unsigned char> &v )
         }
     }
 
-    maxC = max( maxC, max(c1, c2) );
-    if( maxC == v.size() ) --maxC;
+    maxCount = max( maxCount, max(c1, c2) );
+    if( maxCount == v.size() ) --maxCount;
 
-return maxC;
+return maxCount;
 }
 
 
