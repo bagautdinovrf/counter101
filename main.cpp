@@ -37,6 +37,7 @@ using namespace std;
 /**
  * @brief maxOnesAfterRemoveItem_v2 - Фунция с двумя счетчиками
  * Два счетчика без возвратов по массиву.
+ * Почти не быстрей.
  * @param v
  */
 unsigned maxOnesAfterRemoveItem_v2( const vector<unsigned char> &v )
@@ -48,9 +49,8 @@ unsigned maxOnesAfterRemoveItem_v2( const vector<unsigned char> &v )
     // Флаги для обнаруженияя нуля
     bool zf1 = false, zf2 =  false;
 
-    for( int i = 0; i < v.size(); ++i ) {
-        if( 1 == v.at(i) ) {
-
+    for( const auto &item : v ) {
+        if( 1 == item ) {
             if( 0 == c2 || zf2 || (false == zf2 && c2 > 0 ) )
                 ++c1;
             if( zf1 || ( 0 == c1 && 0 != c2 ) || ( zf2 && c1 > 0) )
@@ -131,8 +131,8 @@ int main()
 //    unsigned size = 294'967'290;
 //    vector<char> v(size);
 
-//    for( int i = 0; i < size; ++i ) {
-//        v[i] = rand() % 2;
+//    for( auto &item : v ) {
+//        item = rand() % 2;
 //    }
 
 //    unsigned int t1 =  clock(); // начальное время
