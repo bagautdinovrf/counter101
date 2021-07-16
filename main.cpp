@@ -2,7 +2,8 @@
 /**
  * 16.07.2021
  * Ruslan Bagautdinov
- * bagautdinovrf@gmail.com
+ *      bagautdinovrf@ya.ru
+ *      bagautdinovrf@gmail.com
  * */
 
 
