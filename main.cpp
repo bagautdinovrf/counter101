@@ -78,7 +78,7 @@ return maxCount;
  * Два счетчика без возвратов по массиву.
  * @param v
  */
-unsigned maxOnesAfterRemoveItem_2( const vector<char> &v )
+unsigned maxOnesAfterRemoveItem_v2( const vector<char> &v )
 {
     unsigned maxC = 0;
     unsigned zero = 0;
@@ -91,7 +91,7 @@ unsigned maxOnesAfterRemoveItem_2( const vector<char> &v )
 
             if( 0 == c2 || zf2 || (false == zf2 && c2 > 0 ) )
                 ++c1;
-            if( zf1 || ( 0 == c1 && 0 != c2 ) || ( zf2 && false == zf1 && c1 > 0) )
+            if( zf1 || ( 0 == c1 && 0 != c2 ) || ( zf2 && c1 > 0) )
                 ++c2;
         } else {
             // Сброс второго нуля
@@ -123,7 +123,8 @@ return maxC;
 int main()
 {
 //    vector<char> v = {1,1};
-//    cout << maxOnesAfterRemoveItem_2(v) << endl;
+//    vector<char> v = {1, 1, 0, 1, 1, 0, 1, 1, 1};
+//    cout << maxOnesAfterRemoveItem_v2(v) << endl;
 
 //    unsigned size = 294'967'290;
 //    vector<char> v(size);
@@ -133,13 +134,13 @@ int main()
 //    }
 
 //    unsigned int t1 =  clock(); // начальное время
-////    cout << maxOnesAfterRemoveItem_2(v) << endl;
+////    cout << maxOnesAfterRemoveItem_v2(v) << endl;
 ////    cout << maxOnesAfterRemoveItem(v) << endl;
 //    unsigned int t2 = clock(); // конечное время
 //    std::cout << "Executed in " << t2-t1 << endl;
 
 //    auto t1 = std::chrono::high_resolution_clock::now();
-////    maxOnesAfterRemoveItem_2(v);
+////    maxOnesAfterRemoveItem_v2(v);
 ////    maxOnesAfterRemoveItem(v);
 //    auto t2 = std::chrono::high_resolution_clock::now();
 //    auto time_took = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
@@ -157,15 +158,15 @@ int main()
 
     /**************************************************************************************/
 
-    assert(maxOnesAfterRemoveItem_2({0,0}) == 0);
-    assert(maxOnesAfterRemoveItem_2({0,1}) == 1);
-    assert(maxOnesAfterRemoveItem_2({1,0}) == 1);
-    assert(maxOnesAfterRemoveItem_2({1,1}) == 1);
-    assert(maxOnesAfterRemoveItem_2({1,1,1}) == 2);
-    assert(maxOnesAfterRemoveItem_2({1, 1, 0, 1, 1}) == 4);
-    assert(maxOnesAfterRemoveItem_2({1, 1, 0, 1, 1, 0, 1, 1, 1}) == 5);
-    assert(maxOnesAfterRemoveItem_2({1, 1, 0, 1, 1, 0, 1, 1, 1, 0}) == 5);
-    assert(maxOnesAfterRemoveItem_2({0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0}) == 5);
+    assert(maxOnesAfterRemoveItem_v2({0,0}) == 0);
+    assert(maxOnesAfterRemoveItem_v2({0,1}) == 1);
+    assert(maxOnesAfterRemoveItem_v2({1,0}) == 1);
+    assert(maxOnesAfterRemoveItem_v2({1,1}) == 1);
+    assert(maxOnesAfterRemoveItem_v2({1,1,1}) == 2);
+    assert(maxOnesAfterRemoveItem_v2({1, 1, 0, 1, 1}) == 4);
+    assert(maxOnesAfterRemoveItem_v2({1, 1, 0, 1, 1, 0, 1, 1, 1}) == 5);
+    assert(maxOnesAfterRemoveItem_v2({1, 1, 0, 1, 1, 0, 1, 1, 1, 0}) == 5);
+    assert(maxOnesAfterRemoveItem_v2({0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0}) == 5);
 
     return 0;
 }
