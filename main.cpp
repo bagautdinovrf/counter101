@@ -126,11 +126,11 @@ return maxCount;
 int main()
 {
 //    vector<char> v = {1,1};
-//    vector<char> v = {1, 1, 0, 1, 1, 0, 1, 1, 1};
+//    vector<unsigned char> v = {1, 1, 0, 1, 1, 0, 1, 1, 1,0,1,1,1};
 //    cout << maxOnesAfterRemoveItem_v2(v) << endl;
 
 //    unsigned size = 294'967'290;
-//    vector<char> v(size);
+//    vector<unsigned char> v(size);
 
 //    for( auto &item : v ) {
 //        item = rand() % 2;
