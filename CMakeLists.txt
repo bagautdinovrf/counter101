@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(experimental LANGUAGES CXX)
+project(Counter101 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
