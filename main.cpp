@@ -41,10 +41,11 @@ using namespace std;
  */
 unsigned maxOnesAfterRemoveItem_v2( const vector<unsigned char> &v )
 {
+    // Счетчик
     unsigned maxC = 0;
-    unsigned zero = 0;
-
+    // Счетчик для каждой последовательности
     unsigned c1 = 0, c2 = 0;
+    // Флаги для обнаруженияя нуля
     bool zf1 = false, zf2 =  false;
 
     for( int i = 0; i < v.size(); ++i ) {
