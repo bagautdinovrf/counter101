@@ -37,7 +37,7 @@ using namespace std;
 
 /**
  * @brief maxOnesAfterRemoveItem_v3 - Упрощенная функция с двумя счетчиками
- * По идее самая быстрая.
+ * По идее самая быстрая из всех моих реализаций.
  * @param v
  */
 unsigned maxOnesAfterRemoveItem_v3( const vector<unsigned char> &v )
@@ -86,7 +86,6 @@ int main()
 
 //    unsigned size = 94'967'290;
 //    vector<unsigned char> v(size);
-
 
 //    srand( clock() );
 //    for( auto &item : v ) {
