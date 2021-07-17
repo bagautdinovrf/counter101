@@ -37,6 +37,7 @@ using namespace std;
 
 /**
  * @brief maxOnesAfterRemoveItem_v3 - Упрощенная функция с двумя счетчиками
+ * По идее самая быстрая.
  * @param v
  */
 unsigned maxOnesAfterRemoveItem_v3( const vector<unsigned char> &v )
@@ -200,21 +201,27 @@ int main()
 //    vector<unsigned char> v = {1, 1, 0, 1, 1};
 //    vector<unsigned char> v = {0,0,0,1,0,0,0,0, 1, 0, 1,0,0, 1, 0, 1, 1, 1,0,1,0,1,1,0,0};
 //    vector<unsigned char> v = {0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0,1,1,1,1,0};
-    vector<unsigned char> v = {0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1};
-    cout << maxOnesAfterRemoveItem(v) << endl;
-    cout << maxOnesAfterRemoveItemStateMachine(v) << endl;
-    cout << maxOnesAfterRemoveItem_v3(v) << endl;
+//    vector<unsigned char> v = {0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1};
+//    cout << maxOnesAfterRemoveItem(v) << endl;
+//    cout << maxOnesAfterRemoveItemStateMachine(v) << endl;
+//    cout << maxOnesAfterRemoveItem_v3(v) << endl;
 
 //    unsigned size = 94'967'290;
 //    vector<unsigned char> v(size);
 
+
+//    srand( clock() );
 //    for( auto &item : v ) {
 //        item = rand() % 2;
 //    }
 
+//    for( int i = 0; i < 100; ++i ) {
+//        v[i] = 1;
+//    }
+
 //    unsigned int t1 =  clock(); // начальное время
 //    cout << maxOnesAfterRemoveItem(v) << endl;
-//    cout << maxOnesAfterRemoveItem_v2(v) << endl;
+//    cout << maxOnesAfterRemoveItem_v3(v) << endl;
 //    cout << maxOnesAfterRemoveItemStateMachine(v) << endl;
 //    unsigned int t2 = clock(); // конечное время
 //    std::cout << "Executed in " << t2-t1 << endl;
@@ -222,6 +229,7 @@ int main()
 //    auto t1 = std::chrono::high_resolution_clock::now();
 ////    maxOnesAfterRemoveItem_v2(v);
 ////    maxOnesAfterRemoveItem(v);
+//    maxOnesAfterRemoveItem_v3(v);
 //    auto t2 = std::chrono::high_resolution_clock::now();
 //    auto time_took = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
 //    std::cout << "Executed in " << time_took.count() << endl;
@@ -259,8 +267,6 @@ int main()
     assert(maxOnesAfterRemoveItem_v3({1, 1, 0, 1, 1, 0, 1, 1, 1}) == 5);
     assert(maxOnesAfterRemoveItem_v3({1, 1, 0, 1, 1, 0, 1, 1, 1, 0}) == 5);
     assert(maxOnesAfterRemoveItem_v3({0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0}) == 5);
-
-
 
     return 0;
 }
