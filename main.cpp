@@ -31,6 +31,7 @@ assert(maxOnesAfterRemoveItem[1, 1, 0, 1, 1, 0, 1, 1, 1, 0] == 5)
 #include <cassert>
 #include <ctime>
 #include <chrono>
+#include <algorithm>
 
 using namespace std;
 

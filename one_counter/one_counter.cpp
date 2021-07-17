@@ -1,3 +1,9 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
 /**
  * @brief maxOnesAfterRemoveItem - Функция с одним счетчиком
  * Один счетчик, но возвращаемся назад к еденице каждый раз

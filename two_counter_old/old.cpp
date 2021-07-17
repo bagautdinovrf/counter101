@@ -1,3 +1,9 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
 /**
  * @brief maxOnesAfterRemoveItem_v2 - Фунция с двумя счетчиками
  * Два счетчика без возвратов по массиву.

@@ -1,3 +1,9 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
 enum StateCounter { SC_NULL = 0, SC_FIRST, SC_ONE, SC_ZERO, SC_ZERO_ONE, SC_ZEROZERO };
 
 /**
