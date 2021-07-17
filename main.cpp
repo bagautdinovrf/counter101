@@ -197,10 +197,10 @@ return maxCount;
 
 int main()
 {
-    vector<unsigned char> v = {1, 1, 0, 1, 1};
+//    vector<unsigned char> v = {1, 1, 0, 1, 1};
 //    vector<unsigned char> v = {0,0,0,1,0,0,0,0, 1, 0, 1,0,0, 1, 0, 1, 1, 1,0,1,0,1,1,0,0};
 //    vector<unsigned char> v = {0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0,1,1,1,1,0};
-//    vector<unsigned char> v = {0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1};
+    vector<unsigned char> v = {0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1};
     cout << maxOnesAfterRemoveItem(v) << endl;
     cout << maxOnesAfterRemoveItemStateMachine(v) << endl;
     cout << maxOnesAfterRemoveItem_v3(v) << endl;
