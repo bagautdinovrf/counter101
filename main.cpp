@@ -48,7 +48,7 @@ unsigned maxOnesAfterRemoveItem_v3( const vector<unsigned char> &v )
     if( v.empty() )
         return 0;
 
-    // Счетчик
+    // Максимальное значение Счетчика
     unsigned maxCount = 0;
     // Счетчик для каждой последовательности
     unsigned counter = 0, second = 0;
@@ -90,6 +90,7 @@ int main()
 //    unsigned size = 94'967'290;
 //    vector<unsigned char> v(size);
 
+//    srand( time (nullptr) );
 //    srand( clock() );
 //    for( auto &item : v ) {
 //        item = rand() % 2;
@@ -100,9 +101,9 @@ int main()
 //    }
 
 //    unsigned int t1 =  clock(); // начальное время
-//    cout << maxOnesAfterRemoveItem(v) << endl;
+////    cout << maxOnesAfterRemoveItem(v) << endl;
 //    cout << maxOnesAfterRemoveItem_v3(v) << endl;
-//    cout << maxOnesAfterRemoveItemStateMachine(v) << endl;
+////    cout << maxOnesAfterRemoveItemStateMachine(v) << endl;
 //    unsigned int t2 = clock(); // конечное время
 //    std::cout << "Executed in " << t2-t1 << endl;
 
