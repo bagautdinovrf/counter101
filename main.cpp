@@ -35,8 +35,49 @@ assert(maxOnesAfterRemoveItem[1, 1, 0, 1, 1, 0, 1, 1, 1, 0] == 5)
 using namespace std;
 
 
+/**
+ * @brief maxOnesAfterRemoveItem_v3 - Упрощенная функция с двумя счетчиками
+ * @param v
+ */
+unsigned maxOnesAfterRemoveItem_v3( const vector<unsigned char> &v )
+{
+    if( v.empty() )
+        return 0;
+
+    // Счетчик
+    unsigned maxCount = 0;
+    // Счетчик для каждой последовательности
+    unsigned counter = 0, second = 0;
+    // Флаги для обнаруженияя нуля
+    bool zero_flag = false;
+
+    for( const auto &item : v ) {
+         if( 1 == item ) {
+             ++counter;
+             if( zero_flag )
+                 ++second;
+         } else {
+             if( zero_flag ) {
+                 maxCount = max( maxCount, counter );
+                 counter = second;
+                 second = 0;
+             }
+             zero_flag = true;
+         }
+    }
+
+    maxCount = max( maxCount, counter );
+    if( maxCount == v.size() ) --maxCount;
+
+return maxCount;
+}
+
 enum StateCounter { SC_NULL = 0, SC_FIRST, SC_ONE, SC_ZERO, SC_ZERO_ONE, SC_ZEROZERO };
 
+/**
+ * @brief maxOnesAfterRemoveItemStateMachine - Функция с использованием конечного автомата
+ * @param v
+ */
 unsigned maxOnesAfterRemoveItemStateMachine( const vector< unsigned char > &v)
 {
     if( v.empty() )
@@ -112,56 +153,6 @@ unsigned maxOnesAfterRemoveItemStateMachine( const vector< unsigned char > &v)
 }
 
 /**
- * @brief maxOnesAfterRemoveItem_v2 - Фунция с двумя счетчиками
- * Два счетчика без возвратов по массиву.
- * Почти не быстрей. Не быстрее чем maxOnesAfterRemoveItem
- * @param v
- */
-unsigned maxOnesAfterRemoveItem_v2( const vector<unsigned char> &v )
-{
-    if( v.empty() )
-        return 0;
-    // Счетчик
-    unsigned maxCount = 0;
-    // Счетчик для каждой последовательности
-    unsigned c1 = 0, c2 = 0;
-    // Флаги для обнаруженияя нуля
-    bool zf1 = false, zf2 =  false;
-
-    for( const auto &item : v ) {
-        if( 1 == item ) {
-            if( 0 == c2 || zf2 || (false == zf2 && c2 > 0 ) )
-                ++c1;
-            if( zf1 || ( 0 == c1 && 0 != c2 ) || ( zf2 && c1 > 0) )
-                ++c2;
-        } else {
-            // Сброс второго нуля
-            if( c1 > 0 || c2 > 0 ) {
-                if( zf1 ) {
-                    maxCount = max( maxCount, c1 );
-                    zf1 = false;
-                    c1 = 0;
-                } else if( c1 > 0)
-                    zf1 = true;
-
-                if( zf2 ) {
-                    maxCount = max( maxCount, c2 );
-                    zf2 = false;
-                    c2 = 0;
-                } else if( c2 > 0 )
-                    zf2 = true;
-            }
-        }
-    }
-
-    maxCount = max( maxCount, max(c1, c2) );
-    if( maxCount == v.size() ) --maxCount;
-
-return maxCount;
-}
-
-
-/**
  * @brief maxOnesAfterRemoveItem - Функция с одним счетчиком
  * Один счетчик, но возвращаемся назад к еденице каждый раз
  * @param v
@@ -206,12 +197,13 @@ return maxCount;
 
 int main()
 {
-//    vector<unsigned char> v = {0};
+    vector<unsigned char> v = {1, 1, 0, 1, 1};
 //    vector<unsigned char> v = {0,0,0,1,0,0,0,0, 1, 0, 1,0,0, 1, 0, 1, 1, 1,0,1,0,1,1,0,0};
-    vector<unsigned char> v = {0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0,1,1,1,1,0};
-    cout << maxOnesAfterRemoveItem_v2(v) << endl;
+//    vector<unsigned char> v = {0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0,1,1,1,1,0};
+//    vector<unsigned char> v = {0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1};
     cout << maxOnesAfterRemoveItem(v) << endl;
     cout << maxOnesAfterRemoveItemStateMachine(v) << endl;
+    cout << maxOnesAfterRemoveItem_v3(v) << endl;
 
 //    unsigned size = 94'967'290;
 //    vector<unsigned char> v(size);
@@ -246,18 +238,6 @@ int main()
 
     /**************************************************************************************/
 
-    assert(maxOnesAfterRemoveItem_v2({0,0}) == 0);
-    assert(maxOnesAfterRemoveItem_v2({0,1}) == 1);
-    assert(maxOnesAfterRemoveItem_v2({1,0}) == 1);
-    assert(maxOnesAfterRemoveItem_v2({1,1}) == 1);
-    assert(maxOnesAfterRemoveItem_v2({1,1,1}) == 2);
-    assert(maxOnesAfterRemoveItem_v2({1, 1, 0, 1, 1}) == 4);
-    assert(maxOnesAfterRemoveItem_v2({1, 1, 0, 1, 1, 0, 1, 1, 1}) == 5);
-    assert(maxOnesAfterRemoveItem_v2({1, 1, 0, 1, 1, 0, 1, 1, 1, 0}) == 5);
-    assert(maxOnesAfterRemoveItem_v2({0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0}) == 5);
-
-    /**************************************************************************************/
-
     assert(maxOnesAfterRemoveItemStateMachine({0,0}) == 0);
     assert(maxOnesAfterRemoveItemStateMachine({0,1}) == 1);
     assert(maxOnesAfterRemoveItemStateMachine({1,0}) == 1);
@@ -267,6 +247,20 @@ int main()
     assert(maxOnesAfterRemoveItemStateMachine({1, 1, 0, 1, 1, 0, 1, 1, 1}) == 5);
     assert(maxOnesAfterRemoveItemStateMachine({1, 1, 0, 1, 1, 0, 1, 1, 1, 0}) == 5);
     assert(maxOnesAfterRemoveItemStateMachine({0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0}) == 5);
+
+    /**************************************************************************************/
+
+    assert(maxOnesAfterRemoveItem_v3({0,0}) == 0);
+    assert(maxOnesAfterRemoveItem_v3({0,1}) == 1);
+    assert(maxOnesAfterRemoveItem_v3({1,0}) == 1);
+    assert(maxOnesAfterRemoveItem_v3({1,1}) == 1);
+    assert(maxOnesAfterRemoveItem_v3({1,1,1}) == 2);
+    assert(maxOnesAfterRemoveItem_v3({1, 1, 0, 1, 1}) == 4);
+    assert(maxOnesAfterRemoveItem_v3({1, 1, 0, 1, 1, 0, 1, 1, 1}) == 5);
+    assert(maxOnesAfterRemoveItem_v3({1, 1, 0, 1, 1, 0, 1, 1, 1, 0}) == 5);
+    assert(maxOnesAfterRemoveItem_v3({0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0}) == 5);
+
+
 
     return 0;
 }
