@@ -1,3 +1,13 @@
+
+/**
+ * 17 Июль 2021
+ * autor:
+ *  Ruslan Bagautdinov
+ * mail:
+ *      bagautdinovrf@ya.ru
+ *      bagautdinovrf@gmail.com
+ * */
+
 #include <iostream>
 #include <vector>
 #include <algorithm>

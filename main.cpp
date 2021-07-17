@@ -1,7 +1,9 @@
 
 /**
- * 16.07.2021
- * Ruslan Bagautdinov
+ * 16 Июль 2021
+ * autor:
+ *  Ruslan Bagautdinov
+ * mail:
  *      bagautdinovrf@ya.ru
  *      bagautdinovrf@gmail.com
  * */
