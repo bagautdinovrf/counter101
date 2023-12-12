@@ -37,6 +37,36 @@ assert(maxOnesAfterRemoveItem[1, 1, 0, 1, 1, 0, 1, 1, 1, 0] == 5)
 
 using namespace std;
 
+template <typename Type>
+unsigned maxOnesAfterRemove(const std::vector<Type> &v)
+{
+    if (v.empty())
+        return 0;
+
+    unsigned maxCount       = 0;
+    unsigned counter        = 0;
+    unsigned prevCounter    = 0;
+
+    for (const auto &item : v) {
+        if ( 1 == item ) {
+            ++counter;
+        } else {
+            if ( counter ) {
+                maxCount = std::max(maxCount, counter + prevCounter );
+                prevCounter = counter;
+                counter = 0;
+            } else {
+                prevCounter = 0;
+            }
+        }
+    }
+
+    if ( counter )
+        maxCount = std::max(maxCount, counter + prevCounter );
+    if( maxCount == v.size() ) --maxCount;
+
+    return maxCount;
+}
 
 /**
  * @brief maxOnesAfterRemoveItem_v3 - Упрощенная функция с двумя счетчиками
